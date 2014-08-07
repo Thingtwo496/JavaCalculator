@@ -25,14 +25,15 @@ public class KCouchJavaCalc {
 
     public static void main(String[] args) {
         String operation = "";
+        double num1 = 0;
+        double num2 = 0;
         double result = 0;
         boolean flag = false;
-        while(true)
-        {
+        while (true) {
             System.out.println("Java Calculator\n"
-                    +"We can do:\nAddiiton\nSubtraction\n"
-                    +"Type quit to exit the program\n"
-                    +"What operation would you like to do?");
+                    + "We can do:\nAddiiton\nSubtraction\n"
+                    + "Type quit to exit the program\n"
+                    + "What operation would you like to do?");
             try {
                 //operation = scan.nextLine();
                 operation = br.readLine();
@@ -41,11 +42,19 @@ public class KCouchJavaCalc {
             }
             operation = operation.toLowerCase();
             //System.out.println(operation);
-            
-            switch(operation) {
+
+            switch (operation) {
                 case "addition":
-                    result = Addition();
-                    System.out.println("The result is: "+result);
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    result = Addition(num1, num2);
+                    System.out.println(num1+" + "+num2+" = "+result);
+                    break;
+                case "subtraction":
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    result = Subtraction(num1, num2);
+                    System.out.println(num1+" - "+num2+" = "+result);
                     break;
                 case "quit":
                     System.out.println("Thank you goodbye");
@@ -54,33 +63,33 @@ public class KCouchJavaCalc {
                 default:
                     System.out.println("Invalid Operation");
             }
-            
-            
-            if(flag)
+
+            if (flag) {
                 break;
+            }
         }
     }
 
-    //Addition
-    public static double Addition() {
-        double num1 = 0;
-        double num2 = 0;
-        double result = 0;
+    //Get Numbers
+    public static double GetNumber() {
+        double num = 0;
+        System.out.println("Enter number");
+        try {
+            num = Integer.parseInt(br.readLine());
+        } catch (IOException ex) {
+            Logger.getLogger(KCouchJavaCalc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return num;
+    }
 
-        System.out.println("You Chose Addition!\n"
-                + "Enter the first number");
-        try {
-            num1 = Integer.parseInt(br.readLine());
-        } catch (IOException ex) {
-            Logger.getLogger(KCouchJavaCalc.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println("Enter the second number");
-        try {
-            num2 = Integer.parseInt(br.readLine());
-        } catch (IOException ex) {
-            Logger.getLogger(KCouchJavaCalc.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        result = num1 + num2;
+    //Addition
+    public static double Addition(double num1, double num2) {
+        double result = num1 + num2;
+        return result;
+    }
+
+    public static double Subtraction(double num1, double num2) {
+        double result = num1 - num2;
         return result;
     }
 
