@@ -61,6 +61,12 @@ public class KCouchJavaCalc {
                     num2 = GetNumber();
                     result = Multiplication(num1, num2);
                     System.out.println(num1 + " * " + num2 + " = " + result);
+                
+                case "division":
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    result = Division(num1, num2);
+                    System.out.println(num1 + " / " + num2 + " = " + result);
                     break;
                 case "quit":
                     System.out.println("Thank you goodbye");
@@ -98,10 +104,14 @@ public class KCouchJavaCalc {
         double result = num1 - num2;
         return result;
     }
-    
+
     public static double Multiplication(double num1, double num2) {
         double result = num1 * num2;
         return result;
     }
 
+    public static double Division(double num1, double num2) {
+        double result = num1 / num2;
+        return result;
+    }
 }
