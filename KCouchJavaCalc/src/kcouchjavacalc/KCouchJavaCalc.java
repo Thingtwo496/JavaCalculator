@@ -17,10 +17,6 @@ import java.util.logging.Logger;
  */
 public class KCouchJavaCalc {
 
-    /**
-     * @param args the command line arguments
-     */
-    //public static Scanner scan = new Scanner(System.in);
     public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) {
@@ -29,13 +25,15 @@ public class KCouchJavaCalc {
         double num2 = 0;
         double result = 0;
         boolean flag = false;
+        
         while (true) {
+            
             System.out.println("Java Calculator\n"
                     + "We can do:\nAddiiton\nSubtraction\n"
                     + "Type quit to exit the program\n"
                     + "What operation would you like to do?");
+            
             try {
-                //operation = scan.nextLine();
                 operation = br.readLine();
             } catch (IOException ex) {
                 Logger.getLogger(KCouchJavaCalc.class.getName()).log(Level.SEVERE, null, ex);
@@ -61,7 +59,7 @@ public class KCouchJavaCalc {
                     num2 = GetNumber();
                     result = Multiplication(num1, num2);
                     System.out.println(num1 + " * " + num2 + " = " + result);
-                
+
                 case "division":
                     num1 = GetNumber();
                     num2 = GetNumber();
@@ -99,17 +97,17 @@ public class KCouchJavaCalc {
         double result = num1 + num2;
         return result;
     }
-
+    //Subtraction
     public static double Subtraction(double num1, double num2) {
         double result = num1 - num2;
         return result;
     }
-
+    //Multiplication
     public static double Multiplication(double num1, double num2) {
         double result = num1 * num2;
         return result;
     }
-
+    //Division
     public static double Division(double num1, double num2) {
         double result = num1 / num2;
         return result;
