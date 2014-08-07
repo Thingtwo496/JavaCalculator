@@ -48,13 +48,19 @@ public class KCouchJavaCalc {
                     num1 = GetNumber();
                     num2 = GetNumber();
                     result = Addition(num1, num2);
-                    System.out.println(num1+" + "+num2+" = "+result);
+                    System.out.println(num1 + " + " + num2 + " = " + result);
                     break;
                 case "subtraction":
                     num1 = GetNumber();
                     num2 = GetNumber();
                     result = Subtraction(num1, num2);
-                    System.out.println(num1+" - "+num2+" = "+result);
+                    System.out.println(num1 + " - " + num2 + " = " + result);
+                    break;
+                case "multiplication":
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    result = Multiplication(num1, num2);
+                    System.out.println(num1 + " * " + num2 + " = " + result);
                     break;
                 case "quit":
                     System.out.println("Thank you goodbye");
@@ -90,6 +96,11 @@ public class KCouchJavaCalc {
 
     public static double Subtraction(double num1, double num2) {
         double result = num1 - num2;
+        return result;
+    }
+    
+    public static double Multiplication(double num1, double num2) {
+        double result = num1 * num2;
         return result;
     }
 
