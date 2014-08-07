@@ -56,6 +56,12 @@ public class KCouchJavaCalc {
                     result = Subtraction(num1, num2);
                     System.out.println(num1 + " - " + num2 + " = " + result);
                     break;
+                case "multiplication":
+                    num1 = GetNumber();
+                    num2 = GetNumber();
+                    result = Multiplication(num1, num2);
+                    System.out.println(num1 + " * " + num2 + " = " + result);
+                
                 case "division":
                     num1 = GetNumber();
                     num2 = GetNumber();
@@ -96,6 +102,11 @@ public class KCouchJavaCalc {
 
     public static double Subtraction(double num1, double num2) {
         double result = num1 - num2;
+        return result;
+    }
+
+    public static double Multiplication(double num1, double num2) {
+        double result = num1 * num2;
         return result;
     }
 
