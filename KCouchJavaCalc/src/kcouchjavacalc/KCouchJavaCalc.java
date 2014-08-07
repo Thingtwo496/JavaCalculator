@@ -5,7 +5,11 @@
  */
 package kcouchjavacalc;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -16,47 +20,67 @@ public class KCouchJavaCalc {
     /**
      * @param args the command line arguments
      */
-    public static Scanner scan = new Scanner(System.in);
+    //public static Scanner scan = new Scanner(System.in);
+    public static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
     public static void main(String[] args) {
+        String operation = "";
         double result = 0;
         boolean flag = false;
-        System.out.println("Java Calculator\nWe can do:\nAddiiton\nSubtraction");
-        System.out.println("What operation you like to do?");
-        // Scanner scan = new Scanner(System.in);
-        String operation = scan.nextLine();
-        //System.out.println(operation);
-        if(operation.equals("addition"))
+        while(true)
         {
-            result = Addition();
+            System.out.println("Java Calculator\n"
+                    +"We can do:\nAddiiton\nSubtraction\n"
+                    +"Type quit to exit the program\n"
+                    +"What operation would you like to do?");
+            try {
+                //operation = scan.nextLine();
+                operation = br.readLine();
+            } catch (IOException ex) {
+                Logger.getLogger(KCouchJavaCalc.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            operation = operation.toLowerCase();
+            //System.out.println(operation);
+            
+            switch(operation) {
+                case "addition":
+                    result = Addition();
+                    System.out.println("The result is: "+result);
+                    break;
+                case "quit":
+                    System.out.println("Thank you goodbye");
+                    flag = true;
+                    break;
+                default:
+                    System.out.println("Invalid Operation");
+            }
+            
+            
+            if(flag)
+                break;
         }
-        else
-        {
-            flag = true;
-        }
-        if(flag)
-        {
-            System.out.println("Invalid Operation");
-        }
-        else
-        {
-            System.out.println("The result is: "+result); 
-        }
-        
     }
-    
+
     //Addition
-    public static double Addition()
-    {
+    public static double Addition() {
         double num1 = 0;
         double num2 = 0;
         double result = 0;
-        
+
         System.out.println("You Chose Addition!\n"
                 + "Enter the first number");
-        num1 = scan.nextInt();
+        try {
+            num1 = Integer.parseInt(br.readLine());
+        } catch (IOException ex) {
+            Logger.getLogger(KCouchJavaCalc.class.getName()).log(Level.SEVERE, null, ex);
+        }
         System.out.println("Enter the second number");
-        num2 = scan.nextInt();
-        result = num1+num2;
+        try {
+            num2 = Integer.parseInt(br.readLine());
+        } catch (IOException ex) {
+            Logger.getLogger(KCouchJavaCalc.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        result = num1 + num2;
         return result;
     }
 
